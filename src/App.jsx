@@ -9,18 +9,14 @@ function App() {
   const [ page, setPage ] = useState('');
 
   function handlePageLoad() {
-    console.log('updating state');
     setPage(document.location.hash || '#/');
   }
 
   useEffect( () => {
-    console.log('in effect');
     handlePageLoad();
-
     window.addEventListener('popstate', handlePageLoad);
 
     return () => {
-      console.log('cleanup');
       window.removeEventListener('popstate', handlePageLoad);
     };
   }, []);
