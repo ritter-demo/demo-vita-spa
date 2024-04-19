@@ -6,14 +6,13 @@ import Home from './Home';
 import About from './About';
 
 function App() {
-  const [ page, setPage ] = useState('');
+  const [ page, setPage ] = useState(document.location.hash || '#/');
 
   function handlePageLoad() {
     setPage(document.location.hash || '#/');
   }
 
   useEffect( () => {
-    handlePageLoad();
     window.addEventListener('popstate', handlePageLoad);
 
     return () => {
